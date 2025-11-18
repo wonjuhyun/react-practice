@@ -8,8 +8,8 @@ export const Footer: React.FC<FooterProps> = ({
   links = [
     { label: 'Privacy Policy', href: '#privacy' },
     { label: 'Terms of Service', href: '#terms' },
-    { label: 'Contact Us', href: '#contact' }
-  ]
+    { label: 'Contact Us', href: '#contact' },
+  ],
 }) => {
   return (
     <footer className="bg-gray-900 text-gray-300 mt-auto">
@@ -27,8 +27,12 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="footer-copyright">
-          <p>&copy; {year} {companyName}. All rights reserved.</p>
-          <p className="text-gray-500 text-xs">Built with React, TypeScript, Tailwind CSS & SCSS</p>
+          <p>
+            &copy; {year} {companyName}. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-xs">
+            Built with React, TypeScript, Tailwind CSS & SCSS
+          </p>
         </div>
       </div>
     </footer>

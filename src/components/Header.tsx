@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import type { HeaderProps } from "../types/index";
+import type { HeaderProps } from '../types/index';
 import '../styles/components.scss';
 
 export const Header: React.FC<HeaderProps> = ({
-  title = "TRENDARC",
-  subtitle = "Trend Analysis Platform",
+  title = 'TRENDARC',
+  subtitle = 'Trend Analysis Platform',
   logoUrl,
 }) => {
   const [isDark, setIsDark] = useState(false);
@@ -12,7 +12,9 @@ export const Header: React.FC<HeaderProps> = ({
   // 초기 다크모드 상태 로드
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
 
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       setIsDark(true);
@@ -37,12 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header>
       <div className="header-container">
         <div className="logo-section">
-          {logoUrl && (
-            <img
-              src={logoUrl}
-              alt="Logo"
-            />
-          )}
+          {logoUrl && <img src={logoUrl} alt="Logo" />}
           <div>
             <h1>{title}</h1>
             {subtitle && <p>{subtitle}</p>}

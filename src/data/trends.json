@@ -1,33 +1,32 @@
 [
-    {
-      "id": 1,
-      "title": "AI Revolution",
-      "category": "Technology",
-      "description": "The rapid growth of AI models and automation tools.",
-      "icon": "🤖",
-      "color": "#3b82f6",
-      "views": 12000,
-      "tags": ["AI", "Automation", "ML"]
-    },
-    {
-      "id": 2,
-      "title": "Sustainable Living",
-      "category": "Lifestyle",
-      "description": "More people are adopting eco-friendly lifestyles.",
-      "icon": "🌱",
-      "color": "#22c55e",
-      "views": 8500,
-      "tags": ["Eco", "Green", "Lifestyle"]
-    },
-    {
-      "id": 3,
-      "title": "Remote Work Culture",
-      "category": "Business",
-      "description": "Remote-first companies continue to rise globally.",
-      "icon": "🏢",
-      "color": "#a855f7",
-      "views": 10300,
-      "tags": ["Work", "Remote", "Office"]
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "AI Revolution",
+    "category": "Technology",
+    "description": "The rapid growth of AI models and automation tools.",
+    "icon": "🤖",
+    "color": "#3b82f6",
+    "views": 12000,
+    "tags": ["AI", "Automation", "ML"]
+  },
+  {
+    "id": 2,
+    "title": "Sustainable Living",
+    "category": "Lifestyle",
+    "description": "More people are adopting eco-friendly lifestyles.",
+    "icon": "🌱",
+    "color": "#22c55e",
+    "views": 8500,
+    "tags": ["Eco", "Green", "Lifestyle"]
+  },
+  {
+    "id": 3,
+    "title": "Remote Work Culture",
+    "category": "Business",
+    "description": "Remote-first companies continue to rise globally.",
+    "icon": "🏢",
+    "color": "#a855f7",
+    "views": 10300,
+    "tags": ["Work", "Remote", "Office"]
+  }
+]

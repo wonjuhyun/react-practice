@@ -24,7 +24,9 @@ export const TrendDetail: React.FC = () => {
     try {
       setTimeout(() => {
         const trendId = parseInt(id || '0');
-        const foundTrend = (trendsData as Trend[]).find(t => t.id === trendId);
+        const foundTrend = (trendsData as Trend[]).find(
+          (t) => t.id === trendId
+        );
 
         if (foundTrend) {
           setTrend(foundTrend);
@@ -44,9 +46,10 @@ export const TrendDetail: React.FC = () => {
 
   // Step 4: 이전/다음 트렌드 찾기
   const allTrends = trendsData as Trend[];
-  const currentIndex = allTrends.findIndex(t => t.id === parseInt(id || '0'));
+  const currentIndex = allTrends.findIndex((t) => t.id === parseInt(id || '0'));
   const prevTrend = currentIndex > 0 ? allTrends[currentIndex - 1] : null;
-  const nextTrend = currentIndex < allTrends.length - 1 ? allTrends[currentIndex + 1] : null;
+  const nextTrend =
+    currentIndex < allTrends.length - 1 ? allTrends[currentIndex + 1] : null;
 
   if (loading) {
     return (
@@ -110,17 +113,23 @@ export const TrendDetail: React.FC = () => {
       {/* 트렌드 정보 카드 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-blue-500">
-          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">트렌드 ID</h3>
+          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">
+            트렌드 ID
+          </h3>
           <p className="text-3xl font-black text-blue-600">#{trend.id}</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500">
-          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">카테고리</h3>
+          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">
+            카테고리
+          </h3>
           <p className="text-3xl font-black text-green-600">{trend.category}</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-purple-500">
-          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">조회수</h3>
+          <h3 className="text-gray-600 text-sm font-bold uppercase mb-2">
+            조회수
+          </h3>
           <p className="text-3xl font-black text-purple-600">
             {trend.views ? (trend.views / 1000).toFixed(1) : '0'}K
           </p>
@@ -177,12 +186,14 @@ export const TrendDetail: React.FC = () => {
 
       {/* 유사 트렌드 */}
       <div className="bg-gray-50 rounded-2xl p-8 sm:p-12">
-        <h2 className="text-3xl font-black text-gray-900 mb-6">📌 같은 카테고리의 트렌드</h2>
+        <h2 className="text-3xl font-black text-gray-900 mb-6">
+          📌 같은 카테고리의 트렌드
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {allTrends
-            .filter(t => t.category === trend.category && t.id !== trend.id)
+            .filter((t) => t.category === trend.category && t.id !== trend.id)
             .slice(0, 2)
-            .map(relatedTrend => (
+            .map((relatedTrend) => (
               <button
                 key={relatedTrend.id}
                 onClick={() => navigate(`/trends/${relatedTrend.id}`)}

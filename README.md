@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# 🔥 TRENDARC - Trend Analysis Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> React + TypeScript + Tailwind CSS로 만든 트렌드 분석 플랫폼
 
-Currently, two official plugins are available:
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 목차
 
-## React Compiler
+- [프로젝트 소개](#-프로젝트-소개)
+- [주요 기능](#-주요-기능)
+- [기술 스택](#-기술-스택)
+- [시작하기](#-시작하기)
+- [프로젝트 구조](#-프로젝트-구조)
+- [배포](#-배포)
+- [개발자](#-개발자)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎯 프로젝트 소개
 
-## Expanding the ESLint configuration
+TRENDARC는 최신 웹 기술로 구현한 트렌드 분석 플랫폼입니다.
+사용자는 다양한 트렌드 정보를 검색하고, 필터링하며, 다크모드를 포함한
+반응형 인터페이스로 쾌적하게 정보를 탐색할 수 있습니다.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✨ 데모
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🔗 **[라이브 데모 보기](https://your-project.vercel.app)**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 주요 기능
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- ✅ **검색 기능** - 실시간 트렌드 검색
+- ✅ **태그 필터** - 카테고리별 필터링
+- ✅ **다크모드** - 라이트/다크 테마 전환
+- ✅ **반응형 디자인** - 모바일/태블릿/데스크톱 최적화
+- ✅ **TypeScript** - 타입 안전성 보장
+- ✅ **SCSS Modules** - 컴포넌트별 스타일 관리
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠 기술 스택
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Frontend
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **React 18** - UI 라이브러리
+- **TypeScript** - 정적 타입 체크
+- **Vite** - 빌드 도구
+- **Tailwind CSS** - 유틸리티 CSS 프레임워크
+- **SCSS** - CSS 전처리기
+
+### Code Quality
+
+- **ESLint** - 코드 품질 관리
+- **Prettier** - 코드 포맷팅
+
+### Deployment
+
+- **Vercel** - 자동 배포 플랫폼
+
+## 🏃 시작하기
+
+### 필수 요구사항
+
+- Node.js 18.x 이상
+- npm 또는 yarn
+
+### 설치 및 실행
+
+```bash
+# 저장소 클론
+git clone https://github.com/your-username/trendarc-ts.git
+
+# 프로젝트 디렉토리로 이동
+cd trendarc-ts
+
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
 ```

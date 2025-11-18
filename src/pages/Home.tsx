@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import trendsData from "@/data/trends.json";
-import type { Trend } from "@/types";
-import SearchBar from "@/components/SearchBar";
-import TagFilter from "@/components/TagFilter";
-import { Card } from "@/components/Card";
+import { useState, useEffect } from 'react';
+import trendsData from '@/data/trends.json';
+import type { Trend } from '@/types';
+import SearchBar from '@/components/SearchBar';
+import TagFilter from '@/components/TagFilter';
+import { Card } from '@/components/Card';
 
 export default function Home() {
   const [trends] = useState<Trend[]>(trendsData);
   const [filteredTrends, setFilteredTrends] = useState<Trend[]>(trendsData);
-  const [selectedTag, setSelectedTag] = useState<string>("all");
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // 검색 및 필터링 로직
   useEffect(() => {
     let result = trends;
 
     // 태그 필터
-    if (selectedTag !== "all") {
+    if (selectedTag !== 'all') {
       result = result.filter(
         (trend) => Array.isArray(trend.tags) && trend.tags.includes(selectedTag)
       );
@@ -36,14 +36,18 @@ export default function Home() {
   }, [selectedTag, searchQuery, trends]);
 
   return (
-    <div className="home-container p-6 max-w-7xl mx-auto
+    <div
+      className="home-container p-6 max-w-7xl mx-auto
                     bg-gray-50 dark:bg-gray-900
-                    min-h-screen transition-colors">
+                    min-h-screen transition-colors"
+    >
       <SearchBar onSearch={setSearchQuery} />
       <TagFilter selectedTag={selectedTag} onTagSelect={setSelectedTag} />
 
-      <div className="trends-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-                      gap-6 mt-8">
+      <div
+        className="trends-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+                      gap-6 mt-8"
+      >
         {filteredTrends.map((trend) => (
           <Card key={trend.id} trend={trend} />
         ))}

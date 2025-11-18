@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/card.tsx","./src/components/footer.tsx","./src/components/header.tsx","./src/components/layout.tsx","./src/components/searchbar.tsx","./src/components/tagfilter.tsx","./src/components/todo.tsx","./src/pages/home.tsx","./src/pages/trends/[id]/page.tsx","./src/types/index.ts"],"version":"5.9.3"}
