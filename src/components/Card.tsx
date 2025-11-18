@@ -1,20 +1,28 @@
-import React from 'react';
-import type { CardProps } from '../types';
-import '../styles/components.scss';
+import React from "react";
+import type { Trend } from "@/types";
+import "../styles/components.scss";
+
+interface CardProps {
+  trend: Trend;
+  variant?: "default" | "featured" | "compact";
+  showDescription?: boolean;
+  onClick?: () => void;
+  onDelete?: (id: number) => void;
+}
 
 export const Card: React.FC<CardProps> = ({
-  id,
-  title,
-  category,
-  description,
-  icon,
-  color = 'from-blue-500 to-blue-600',
+  trend,
   onClick,
   onDelete,
-  variant = 'default',
-  showDescription = true
+  variant = "default",
+  showDescription = true,
 }) => {
-  const variantClass = variant === 'featured' ? 'featured' : variant === 'compact' ? 'compact' : '';
+  const variantClass =
+    variant === "featured"
+      ? "featured"
+      : variant === "compact"
+      ? "compact"
+      : "";
 
   return (
     <div
@@ -23,17 +31,18 @@ export const Card: React.FC<CardProps> = ({
       role="button"
       tabIndex={0}
     >
+      {/* 상단: 아이콘 + 카테고리 */}
       <div className="card-header">
         <div className="card-icon-section">
-          {icon && <span className="card-icon">{icon}</span>}
-          <span className="category-badge">{category}</span>
+          {trend.icon && <span className="card-icon">{trend.icon}</span>}
+          <span className="category-badge">{trend.category}</span>
         </div>
 
         {onDelete && (
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onDelete(id);
+              onDelete(trend.id);
             }}
             className="card-delete-btn"
             aria-label="Delete"
@@ -43,13 +52,12 @@ export const Card: React.FC<CardProps> = ({
         )}
       </div>
 
-      <h3 className="card-title">{title}</h3>
-
-      {showDescription && description && (
-        <p className="card-description">{description}</p>
+      {/* 본문 */}
+      <h3 className="card-title">{trend.title}</h3>
+      {showDescription && trend.description && (
+        <p className="card-description">{trend.description}</p>
       )}
-
-      <div className={`gradient-bar bg-gradient-to-r ${color}`} />
+      <div className={`gradient-bar bg-gradient-to-r ${trend.color}`} />
     </div>
   );
 };
