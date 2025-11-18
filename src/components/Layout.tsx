@@ -1,13 +1,13 @@
 import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import type { LayoutProps } from '../types';
+import type { LayoutProps } from '../types/index';
 import '../styles/components.scss';
 
 export const Layout: React.FC<LayoutProps> = ({
   children,
   showHeader = true,
-  showFooter = true
+  showFooter = true,
 }) => {
   return (
     <div className="layout flex flex-col min-h-screen bg-gray-50">
@@ -21,3 +21,5 @@ export const Layout: React.FC<LayoutProps> = ({
     </div>
   );
 };
+
+export default Layout;

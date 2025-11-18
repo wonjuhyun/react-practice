@@ -174,3 +174,59 @@ $transition-smooth: all $transition-duration $transition-timing;
   margin: 0 auto;
   padding: 0 $spacing-md;
 }
+
+.search-bar {
+    margin: 2rem 0;
+  
+    .search-input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      transition: border-color 0.3s;
+  
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+    }
+  }
+  
+  .tag-filter {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  
+    .tag-button {
+      padding: 0.5rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 20px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+  
+      &:hover {
+        background: #f0f0f0;
+      }
+  
+      &.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+    }
+  }
+  
+  .home-container {
+    padding: 2rem;
+  }
+  
+  .trends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
