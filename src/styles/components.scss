@@ -1,232 +1,444 @@
-// ============================================
-// 색상 변수 (Color Palette)
-// ============================================
-
-// Primary Colors (주요 색상)
-$primary-color: #007bff;
-$primary-dark: #0056b3;
-$primary-light: #0069d9;
-
-// Secondary Colors (보조 색상)
-$secondary-color: #6c757d;
-$secondary-dark: #545b62;
-$secondary-light: #adb5bd;
-
-// Status Colors (상태 색상)
-$success-color: #28a745;
-$danger-color: #dc3545;
-$warning-color: #ffc107;
-$info-color: #17a2b8;
-
-// Neutral Colors (중립 색상)
-$white: #ffffff;
-$light-gray: #f8f9fa;
-$gray: #e9ecef;
-$dark-gray: #495057;
-$black: #212529;
+// ⭐ 이 줄을 반드시 맨 위에 추가하세요!
+@use "./variable.scss" as *;
 
 // ============================================
-// 폰트 변수 (Typography)
+// Header 컴포넌트 스타일 (다크모드 적용)
 // ============================================
 
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-$font-family-heading: 'Segoe UI', 'Roboto', sans-serif;
+header {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--card-shadow);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
-// 폰트 사이즈
-$font-size-base: 16px;
-$font-size-sm: 14px;
-$font-size-lg: 18px;
-$font-size-xl: 24px;
-$font-size-2xl: 32px;
+  .header-container {
+    @include container-center;
+    @include flex-space-between;
+    padding: $spacing-md;
 
-// 폰트 굵기
-$font-weight-normal: 400;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-md;
+      padding: $spacing-sm;
+    }
+  }
 
-// 라인 높이
-$line-height-base: 1.6;
-$line-height-heading: 1.2;
+  .logo-section {
+    @include flex-center;
+    gap: $spacing-md;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: $border-radius-md;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      margin: 0;
+      background: linear-gradient(
+        135deg,
+        var(--accent-blue),
+        var(--accent-purple)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      @include mobile {
+        font-size: $font-size-xl;
+      }
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  }
+
+  // 다크모드 토글 버튼
+  .theme-toggle-btn {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-smooth;
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
+      font-size: 1.25rem;
+    }
+
+    &:hover {
+      transform: rotate(180deg) scale(1.1);
+      border-color: var(--accent-blue);
+    }
+
+    &:active {
+      transform: rotate(180deg) scale(0.95);
+    }
+  }
+
+  nav {
+    @include flex-center;
+    gap: $spacing-lg;
+
+    @include mobile {
+      gap: $spacing-md;
+    }
+
+    a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: $font-weight-semibold;
+      transition: $transition-smooth;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-sm;
+
+      &:hover {
+        background-color: var(--bg-secondary);
+      }
+    }
+  }
+}
 
 // ============================================
-// 간격 변수 (Spacing)
+// Footer 컴포넌트 스타일
 // ============================================
 
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-$spacing-2xl: 48px;
+footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+
+  .footer-container {
+    @include container-center;
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .footer-links {
+    @include flex-center;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-lg;
+    border-bottom: $border-width solid var(--border-color);
+    flex-wrap: wrap;
+
+    @include mobile {
+      gap: $spacing-md;
+    }
+
+    a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      transition: $transition-smooth;
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    font-size: $font-size-sm;
+
+    p {
+      margin: $spacing-sm 0;
+      color: var(--text-muted);
+
+      &:last-child {
+        font-size: 12px;
+      }
+    }
+  }
+}
 
 // ============================================
-// 브레이크포인트 (Breakpoints)
+// Layout 컴포넌트 스타일
 // ============================================
 
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-2xl: 1400px;
-
-// ============================================
-// 보더 & 라디우스
-// ============================================
-
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
-$border-radius-lg: 12px;
-$border-width: 1px;
-$border-color: #dee2e6;
-
-// ============================================
-// 그림자 (Shadows)
-// ============================================
-
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-
-// ============================================
-// 트랜지션 & 애니메이션
-// ============================================
-
-$transition-duration: 0.3s;
-$transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-$transition-smooth: all $transition-duration $transition-timing;
-
-// ============================================
-// SCSS 믹스인 (Mixins) - 재사용 가능한 스타일
-// ============================================
-
-// 플렉스박스 센터 정렬
-@mixin flex-center {
+.layout {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
 }
 
-// 플렉스박스 스페이스 비트윈
-@mixin flex-space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.layout-main {
+  flex: 1;
+  @include container-center;
+  width: 100%;
+  padding: $spacing-xl $spacing-md;
+  animation: fadeIn 0.5s ease-out;
 
-// 반응형 디자인 - 미디어 쿼리
-@mixin media-sm {
-  @media (max-width: $breakpoint-sm) {
-    @content;
+  @include mobile {
+    padding: $spacing-lg $spacing-md;
   }
 }
 
-@mixin media-md {
-  @media (max-width: $breakpoint-md) {
-    @content;
-  }
-}
-
-@mixin media-lg {
-  @media (min-width: $breakpoint-lg) {
-    @content;
-  }
-}
-
-// 텍스트 엘립시스 (말줄임)
-@mixin text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-@mixin text-ellipsis-lines($lines: 2) {
-  display: -webkit-box;
-  -webkit-line-clamp: $lines;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-// 호버 효과
-@mixin hover-effect {
-  transition: $transition-smooth;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-  }
-}
-
-// 버튼 기본 스타일
-@mixin button-reset {
-  border: none;
-  background: none;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-}
-
-// 센터 컨테이너
-@mixin container-center {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 $spacing-md;
-}
+// ============================================
+// SearchBar 컴포넌트 (다크모드 적용)
+// ============================================
 
 .search-bar {
-    margin: 2rem 0;
-  
-    .search-input {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      transition: border-color 0.3s;
-  
-      &:focus {
-        outline: none;
-        border-color: #007bff;
-      }
+  margin: 2rem 0;
+
+  .search-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    transition: all 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    @include mobile {
+      padding: 0.75rem;
+      font-size: 0.9rem;
     }
   }
-  
-  .tag-filter {
+}
+
+// ============================================
+// TagFilter 컴포넌트 (다크모드 적용)
+// ============================================
+
+.tag-filter {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+
+  @include mobile {
+    gap: 0.5rem;
+  }
+
+  .tag-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    @include mobile {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    &:hover {
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+    }
+  }
+}
+
+// ============================================
+// Card 컴포넌트 스타일 (다크모드 적용)
+// ============================================
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  box-shadow: var(--card-shadow);
+  padding: $spacing-lg;
+  transition: $transition-smooth;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include mobile {
+    padding: $spacing-md;
+  }
+
+  // 호버 효과
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  // 카드 헤더
+  .card-header {
     display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
-    flex-wrap: wrap;
-  
-    .tag-button {
-      padding: 0.5rem 1rem;
-      border: 2px solid #ddd;
-      border-radius: 20px;
-      background: white;
-      cursor: pointer;
-      transition: all 0.3s;
-  
-      &:hover {
-        background: #f0f0f0;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+  }
+
+  .card-icon-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .card-icon {
+      font-size: 2rem;
+
+      @include mobile {
+        font-size: 1.5rem;
       }
-  
-      &.active {
-        background: #007bff;
-        color: white;
-        border-color: #007bff;
+    }
+
+    .category-badge {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: $font-weight-semibold;
+
+      @include mobile {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
       }
     }
   }
-  
-  .home-container {
-    padding: 2rem;
+
+  // 삭제 버튼
+  .card-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #ef4444;
+      transform: scale(1.2);
+    }
   }
-  
-  .trends-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+
+  // 제목
+  .card-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-sm 0;
+    line-height: $line-height-heading;
+
+    @include mobile {
+      font-size: $font-size-lg;
+    }
   }
-  
+
+  // 설명
+  .card-description {
+    color: var(--text-secondary);
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    margin: 0 0 $spacing-md 0;
+
+    @include mobile {
+      font-size: $font-size-sm;
+    }
+  }
+
+  // 그래디언트 바
+  .gradient-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: $spacing-md;
+  }
+
+  // Featured variant
+  &.featured {
+    border: 2px solid var(--accent-blue);
+
+    .card-title {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  // Compact variant
+  &.compact {
+    padding: $spacing-md;
+
+    .card-title {
+      font-size: $font-size-lg;
+    }
+
+    .card-description {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+// ============================================
+// Grid 레이아웃 (반응형)
+// ============================================
+
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+// ============================================
+// 애니메이션
+// ============================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
